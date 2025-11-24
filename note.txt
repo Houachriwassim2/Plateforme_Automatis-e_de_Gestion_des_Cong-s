@@ -1,0 +1,34 @@
+Le CSV ne fait qu’exposer les données.
+Mais avec Docker, Jenkins, Grafana… tu as besoin d’un service backend qui :
+
+lit le CSV
+
+fournit des endpoints d’API (JSON)
+
+permet à Grafana de se connecter
+
+donne un “contenu” à dockeriser
+
+donne un sens à ton pipeline CI/CD (tests, build, déploiement)
+
+💡 Sans backend, ton Dockerfile ne servira à rien, et Jenkins n’aura rien à builder.
+
+✅ ✔ La meilleure solution : créer une mini API Python (Flask)
+
+Tu vas créer un simple fichier :
+
+app.py
+
+Une API qui :
+
+charge ton MicrosoftLists.csv
+
+expose des endpoints comme :
+
+/conges
+
+/stats
+
+/stats/par-agent
+
+/stats/attente
